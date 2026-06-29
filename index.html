@@ -274,7 +274,33 @@ body {
 }
 
 /* ── PHOTO PLACEHOLDER ── */
-
+.photo-slot {
+  width: 100%;
+  height: 280px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--mint) 0%, var(--mint-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--brown);
+  font-size: 12px;
+  letter-spacing: .1em;
+  margin: 24px 0;
+  overflow: hidden;
+  position: relative;
+}
+.photo-slot img {
+  width: 100%; height: 100%; object-fit: cover;
+  position: absolute; top: 0; left: 0;
+}
+.photo-slot-label {
+  position: relative; z-index: 1;
+  text-align: center;
+}
+.slot-icon { font-size: 32px; opacity: .5; margin-bottom: 6px; }
+  
 /* ── INFO GRID ── */
 .info-grid {
   display: grid;
@@ -536,6 +562,7 @@ footer .footer-names {
     <img src="photo1a.jpg" alt="Nursaule & Sultan">
   </div>
 
+  
   <!-- Countdown -->
   <div class="countdown-bar" id="countdown">
     <div class="cd-unit"><span class="cd-num" id="cd-w">--</span><span class="cd-label" data-ru="недель" data-kz="апта">недель</span></div>
@@ -561,7 +588,7 @@ footer .footer-names {
       <p style="font-size:14px; color: var(--text-mid); letter-spacing:.05em" data-ru="С уважением," data-kz="Құрметпен,">С уважением,</p>
       <p style="font-family: BickhamScript, cursive; font-size: 32px; color: var(--text-dark); margin-top: 4px">Кенжебек &amp; Жанна</p>
     </div>
-
+</section>
 
 <!-- ══ SECTION 3: DETAILS ══ -->
 <section class="section" id="sec-details">
