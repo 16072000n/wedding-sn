@@ -157,33 +157,28 @@ body {
 
 /* Photo placeholder for hero */
 .hero-photo {
-  width: min(315px, 83vw);
-  height: min(400px, 100vw);
+  width: min(300px, 82vw);
+  aspect-ratio: 921 / 1152;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--mint) 0%, var(--mint-dark) 100%);
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column;
-  gap: 8px;
-  color: var(--brown);
-  font-size: 13px;
-  letter-spacing: .08em;
-  opacity: 0;
-  animation: fadeUp .8s .8s forwards;
   overflow: hidden;
   position: relative;
   box-shadow: 0 8px 40px rgba(122,79,58,0.15);
+  opacity: 0; animation: fadeUp .8s .8s forwards;
+  background: var(--mint);
 }
 .hero-photo img {
-  width: 100%; height: 100%; object-fit: contain;
-  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
-.hero-photo .photo-label {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 12px;
+.hero-photo .photo-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; color: var(--brown); font-size: 13px;
 }
-.photo-icon { font-size: 36px; margin-bottom: 8px; opacity: .6; }
+.photo-icon { font-size: 36px; opacity: .6; }
 
 /* ── COUNTDOWN ── */
 .countdown-bar {
@@ -381,94 +376,43 @@ body {
   font-size: 10px;
 }
 
-/* ── RSVP FORM ── */
-.rsvp-section {
-  background: var(--mint-light);
-  padding: 72px 24px;
-}
+
+/* RSVP */
+.rsvp-section { background: var(--mint-light); padding: 72px 24px; }
 .rsvp-inner {
-  max-width: 560px;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .7s, transform .7s;
+  max-width: 560px; margin: 0 auto; text-align: center;
+  opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s;
 }
 .rsvp-inner.visible { opacity: 1; transform: none; }
-
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 24px 0;
-  text-align: left;
-}
+.radio-group { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; text-align: left; }
 .radio-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: white;
-  border-radius: 12px;
-  padding: 14px 18px;
-  cursor: pointer;
-  border: 2px solid transparent;
+  display: flex; align-items: center; gap: 12px;
+  background: white; border-radius: 12px; padding: 14px 18px;
+  cursor: pointer; border: 2px solid transparent;
   transition: border-color .2s, box-shadow .2s;
 }
-.radio-item:has(input:checked) {
-  border-color: var(--brown-btn);
-  box-shadow: 0 2px 10px rgba(139,94,74,0.15);
-}
-.radio-item input[type=radio] {
-  width: 18px; height: 18px;
-  accent-color: var(--brown-btn);
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.radio-item label {
-  font-size: 15px;
-  cursor: pointer;
-  color: var(--text-dark);
-}
-
+.radio-item:has(input:checked) { border-color: var(--brown-btn); box-shadow: 0 2px 10px rgba(139,94,74,0.15); }
+.radio-item input[type=radio] { width: 18px; height: 18px; accent-color: var(--brown-btn); cursor: pointer; flex-shrink: 0; }
+.radio-item label { font-size: 15px; cursor: pointer; color: var(--text-dark); }
 .name-input, .msg-input {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1.5px solid var(--mint-dark);
-  border-radius: 12px;
-  font-family: 'TildaSans', sans-serif;
-  font-size: 15px;
-  background: white;
-  color: var(--text-dark);
-  margin-bottom: 12px;
-  transition: border-color .2s;
-  outline: none;
+  width: 100%; padding: 14px 16px;
+  border: 1.5px solid var(--mint-dark); border-radius: 12px;
+  font-family: 'TildaSans', sans-serif; font-size: 15px;
+  background: white; color: var(--text-dark); margin-bottom: 12px;
+  transition: border-color .2s; outline: none;
 }
 .name-input:focus, .msg-input:focus { border-color: var(--brown-btn); }
 .msg-input { height: 110px; resize: vertical; }
-
 .btn-primary {
-  background: var(--brown-btn);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 15px 40px;
-  font-family: 'TildaSans', sans-serif;
-  font-size: 15px;
-  letter-spacing: .05em;
-  cursor: pointer;
-  width: 100%;
+  background: var(--brown-btn); color: white; border: none;
+  border-radius: 12px; padding: 15px 40px;
+  font-family: 'TildaSans', sans-serif; font-size: 15px;
+  letter-spacing: .05em; cursor: pointer; width: 100%;
   transition: background .2s, transform .1s;
 }
 .btn-primary:hover { background: var(--brown); }
 .btn-primary:active { transform: scale(.98); }
-
-.form-success {
-  display: none;
-  background: white;
-  border-radius: 12px;
-  padding: 28px;
-  text-align: center;
-}
+.form-success { display: none; background: white; border-radius: 12px; padding: 28px; text-align: center; }
 .form-success.show { display: block; }
 .success-icon { font-size: 40px; margin-bottom: 12px; }
 
