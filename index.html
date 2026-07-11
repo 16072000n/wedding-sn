@@ -488,7 +488,7 @@ footer .footer-names {
 </button>
 
 <audio id="bg-music" loop>
-  <source src="back_DM.mp3" type="audio/mpeg">
+  <source src="back_dm.mp3" type="audio/mpeg">
 </audio>
 
 <!-- ══ SECTION 1: HERO ══ -->
@@ -709,7 +709,7 @@ let playing = false;
 function toggleMusic() {
   if (playing) { audio.pause(); btn.classList.remove('playing'); }
   else {
-    audio.play().catch(() => console.log('Add back_DM.mp3 to enable music'));
+    audio.play().catch(() => console.log('Add back_dm.mp3 to enable music'));
     btn.classList.add('playing');
   }
   playing = !playing;
