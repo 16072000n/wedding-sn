@@ -461,8 +461,31 @@ footer .footer-names {
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: none; }
+  to   { opacity: 1; transform: none; }
 }
+ 
+@media (max-width: 480px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .countdown-bar { gap: 12px; }
+  .cd-num { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+ 
+<div id="lang-switcher">
+  <button class="active" onclick="setLang('ru')">РУС</button>
+  <button onclick="setLang('kz')">ҚАЗ</button>
+</div>
+ 
+<button id="music-btn" onclick="toggleMusic()" title="Музыка">
+  <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+ 
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 /* ── RESPONSIVE ── */
 @media (max-width: 480px) {
@@ -706,12 +729,19 @@ document.querySelectorAll('.section, .rsvp-inner').forEach(el => observer.observ
 const audio = document.getElementById('bg-music');
 const btn = document.getElementById('music-btn');
 let playing = false;
+let autoStarted = false;
  
 function startMusic() {
-  audio.play().then(() => {
-    playing = true;
-    btn.classList.add('playing');
-  }).catch(() => {});
+  audio.volume = 0.7;
+  const promise = audio.play();
+  if (promise !== undefined) {
+    promise.then(() => {
+      playing = true;
+      btn.classList.add('playing');
+    }).catch(err => {
+      console.log('Музыка не запустилась:', err);
+    });
+  }
 }
  
 function toggleMusic() {
@@ -724,16 +754,21 @@ function toggleMusic() {
   }
 }
  
-// Автозапуск при первом касании/скролле
-function autoplayOnInteraction() {
-  if (!playing) startMusic();
-  document.removeEventListener('scroll', autoplayOnInteraction);
-  document.removeEventListener('touchstart', autoplayOnInteraction);
-  document.removeEventListener('click', autoplayOnInteraction);
+// Автозапуск при первом взаимодействии
+function handleFirstInteraction() {
+  if (autoStarted) return;
+  autoStarted = true;
+  startMusic();
+  document.removeEventListener('touchstart', handleFirstInteraction, true);
+  document.removeEventListener('mousedown', handleFirstInteraction, true);
+  document.removeEventListener('keydown', handleFirstInteraction, true);
+  window.removeEventListener('scroll', handleFirstInteraction, true);
 }
-document.addEventListener('scroll', autoplayOnInteraction);
-document.addEventListener('touchstart', autoplayOnInteraction);
-document.addEventListener('click', autoplayOnInteraction);
+ 
+document.addEventListener('touchstart', handleFirstInteraction, true);
+document.addEventListener('mousedown', handleFirstInteraction, true);
+document.addEventListener('keydown', handleFirstInteraction, true);
+window.addEventListener('scroll', handleFirstInteraction, true);
 
 // ── RSVP ──
 function submitRSVP() {
