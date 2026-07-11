@@ -703,8 +703,9 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.section, .rsvp-inner').forEach(el => observer.observe(el));
 
 // ── MUSIC ──
+bash
 cd /mnt/user-data/outputs && python3 << 'EOF'
-with open('wedding.html', 'r', encoding='utf-8') as f:
+with open('index.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
 old = """// MUSIC
@@ -752,7 +753,7 @@ document.addEventListener('click', autoplayOnInteraction);"""
 
 if old in content:
     content = content.replace(old, new)
-    with open('wedding.html', 'w', encoding='utf-8') as f:
+    with open('index.html', 'w', encoding='utf-8') as f:
         f.write(content)
     print("OK")
 else:
