@@ -703,33 +703,17 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.section, .rsvp-inner').forEach(el => observer.observe(el));
 
 // ── MUSIC ──
-bash
-cd /mnt/user-data/outputs && python3 << 'EOF'
-with open('index.html', 'r', encoding='utf-8') as f:
-    content = f.read()
-
-old = """// MUSIC
 const audio = document.getElementById('bg-music');
 const btn = document.getElementById('music-btn');
 let playing = false;
-function toggleMusic() {
-  if (playing) { audio.pause(); btn.classList.remove('playing'); }
-  else { audio.play().catch(()=>{}); btn.classList.add('playing'); }
-  playing = !playing;
-}"""
-
-new = """// MUSIC
-const audio = document.getElementById('bg-music');
-const btn = document.getElementById('music-btn');
-let playing = false;
-
+ 
 function startMusic() {
   audio.play().then(() => {
     playing = true;
     btn.classList.add('playing');
   }).catch(() => {});
 }
-
+ 
 function toggleMusic() {
   if (playing) {
     audio.pause();
@@ -739,7 +723,7 @@ function toggleMusic() {
     startMusic();
   }
 }
-
+ 
 // Автозапуск при первом касании/скролле
 function autoplayOnInteraction() {
   if (!playing) startMusic();
@@ -749,16 +733,7 @@ function autoplayOnInteraction() {
 }
 document.addEventListener('scroll', autoplayOnInteraction);
 document.addEventListener('touchstart', autoplayOnInteraction);
-document.addEventListener('click', autoplayOnInteraction);"""
-
-if old in content:
-    content = content.replace(old, new)
-    with open('index.html', 'w', encoding='utf-8') as f:
-        f.write(content)
-    print("OK")
-else:
-    print("NOT FOUND")
-EOF
+document.addEventListener('click', autoplayOnInteraction);
 
 // ── RSVP ──
 function submitRSVP() {
