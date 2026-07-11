@@ -78,7 +78,7 @@ body {
   padding: 6px 16px;
   border: none;
   background: transparent;
-  font-family: 'TildaSans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   letter-spacing: .05em;
   cursor: pointer;
@@ -703,17 +703,61 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.section, .rsvp-inner').forEach(el => observer.observe(el));
 
 // ── MUSIC ──
+cd /mnt/user-data/outputs && python3 << 'EOF'
+with open('wedding.html', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+old = """// MUSIC
 const audio = document.getElementById('bg-music');
 const btn = document.getElementById('music-btn');
 let playing = false;
 function toggleMusic() {
   if (playing) { audio.pause(); btn.classList.remove('playing'); }
-  else {
-    audio.play().catch(() => console.log('Add back_dm.mp3 to enable music'));
-    btn.classList.add('playing');
-  }
+  else { audio.play().catch(()=>{}); btn.classList.add('playing'); }
   playing = !playing;
+}"""
+
+new = """// MUSIC
+const audio = document.getElementById('bg-music');
+const btn = document.getElementById('music-btn');
+let playing = false;
+
+function startMusic() {
+  audio.play().then(() => {
+    playing = true;
+    btn.classList.add('playing');
+  }).catch(() => {});
 }
+
+function toggleMusic() {
+  if (playing) {
+    audio.pause();
+    btn.classList.remove('playing');
+    playing = false;
+  } else {
+    startMusic();
+  }
+}
+
+// Автозапуск при первом касании/скролле
+function autoplayOnInteraction() {
+  if (!playing) startMusic();
+  document.removeEventListener('scroll', autoplayOnInteraction);
+  document.removeEventListener('touchstart', autoplayOnInteraction);
+  document.removeEventListener('click', autoplayOnInteraction);
+}
+document.addEventListener('scroll', autoplayOnInteraction);
+document.addEventListener('touchstart', autoplayOnInteraction);
+document.addEventListener('click', autoplayOnInteraction);"""
+
+if old in content:
+    content = content.replace(old, new)
+    with open('wedding.html', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("OK")
+else:
+    print("NOT FOUND")
+EOF
 
 // ── RSVP ──
 function submitRSVP() {
