@@ -28,9 +28,49 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--cream);
   color: var(--text-dark);
   overflow-x: hidden;
+}
+
+/* Фиксированный фон */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('bg.jpg') center center / cover no-repeat;
+  z-index: -2;
+}
+
+/* Полупрозрачный слой поверх фона — всегда виден */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 243, 238, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: -1;
+}
+
+/* Секции — стеклянный эффект */
+#hero {
+  background: rgba(255, 255, 255, 0.45) !important;
+}
+.section {
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 20px;
+  box-shadow: 0 4px 32px rgba(122,79,58,0.10);
+  margin: 16px auto;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.rsvp-section {
+  background: rgba(234, 242, 233, 0.55) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+footer {
+  background: rgba(44, 44, 44, 0.85) !important;
 }
 
 /* Скриптовый шрифт для имён — используем Cormorant Garamond (красивый, поддерживает кириллицу) */
@@ -307,9 +347,9 @@ footer .footer-names {
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow" data-ru="Приглашаем Вас на свадьбу" data-kz="Сіздерді үйлену тойына шақырамыз">Приглашаем на свадьбу</p>
+  <p class="hero-eyebrow" data-ru="Приглашаем на свадьбу" data-kz="Үйленуге шақырамыз">Приглашаем на свадьбу</p>
   <h1 class="hero-script">Sultan &amp; Nursaule</h1>
-  <p class="hero-date" data-ru="26 сентября 2026 года • 17:00" data-kz="2026 жыл 26 қыркүйек • 17:00">26 сентября 2026 года • 17:00</p>
+  <p class="hero-date" data-ru="26 сентября 2026 • 17:00" data-kz="2026 жылы 26 қыркүйек • 17:00">26 сентября 2026 • 17:00</p>
 
   <div class="hero-photo">
     <img src="photo1a.jpg" alt="Sultan & Nursaule">
@@ -350,6 +390,7 @@ footer .footer-names {
 <section class="section" id="sec-details">
   <div style="text-align:center">
     <span class="section-tag" data-ru="Детали торжества" data-kz="Той мәліметтері">Детали торжества</span>
+    <h2 class="section-title" data-ru="Ждём вас!" data-kz="Сізді күтеміз!">Ждём вас!</h2>
     <div class="info-grid">
       <div class="info-item">
         <div class="info-item-icon">📅</div>
@@ -416,6 +457,7 @@ footer .footer-names {
 <section class="rsvp-section" id="sec-rsvp">
   <div class="rsvp-inner" id="rsvp-inner">
     <span class="section-tag" data-ru="Подтверждение" data-kz="Растау">Подтверждение</span>
+    <h2 class="section-title" data-ru="Вы придёте?" data-kz="Келесіз бе?">Вы придёте?</h2>
     <p class="section-body" data-ru="Просим подтвердить ваше присутствие до 1 сентября 2026 г. Если будете с супругом(ой), укажите оба имени." data-kz="2026 жылы 1 қыркүйекке дейін қатысуыңызды растаңыз.">
       Просим подтвердить ваше присутствие до 1 сентября 2026 г.<br>Если будете с супругом(ой), укажите оба имени.
     </p>
