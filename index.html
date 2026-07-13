@@ -347,9 +347,9 @@ footer .footer-names {
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow" data-ru="Приглашаем на свадьбу" data-kz="Үйленуге шақырамыз">Приглашаем на свадьбу</p>
+  <p class="hero-eyebrow" data-ru="Приглашаем Вас на свадьбу" data-kz="Сіздерді үйлену тойына шақырамыз">Приглашаем Вас на свадьбу</p>
   <h1 class="hero-script">Sultan &amp; Nursaule</h1>
-  <p class="hero-date" data-ru="26 сентября 2026 • 17:00" data-kz="2026 жылы 26 қыркүйек • 17:00">26 сентября 2026 • 17:00</p>
+  <p class="hero-date" data-ru="26 сентября 2026 года • 17:00" data-kz="2026 жыл 26 қыркүйек • 17:00">26 сентября 2026 года • 17:00</p>
 
   <div class="hero-photo">
     <img src="photo1a.jpg" alt="Sultan & Nursaule">
@@ -365,8 +365,7 @@ footer .footer-names {
     <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label" data-ru="дней" data-kz="күн">дней</span></div>
     <div class="cd-sep">·</div>
     <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label" data-ru="часов" data-kz="сағат">часов</span></div>
-    <div class="cd-sep">·</div>
-    <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label" data-ru="минут" data-kz="минут">минут</span></div>
+
   </div>
 </section>
 
@@ -457,9 +456,9 @@ footer .footer-names {
 <section class="rsvp-section" id="sec-rsvp">
   <div class="rsvp-inner" id="rsvp-inner">
     <span class="section-tag" data-ru="Подтверждение" data-kz="Растау">Подтверждение</span>
-    <h2 class="section-title" data-ru="Вы придёте?" data-kz="Келесіз бе?">Вы придёте?</h2>
-    <p class="section-body" data-ru="Просим подтвердить ваше присутствие до 1 сентября 2026 г. Если будете с супругом(ой), укажите оба имени." data-kz="2026 жылы 1 қыркүйекке дейін қатысуыңызды растаңыз.">
-      Просим подтвердить ваше присутствие до 1 сентября 2026 г.<br>Если будете с супругом(ой), укажите оба имени.
+
+    <p class="section-body" data-ru="Просим подтвердить ваше присутствие. Если будете с супругом(ой), укажите оба имени." data-kz="Қатысуыңызды растаңыз. Егер жұбайыңызбен келетін болсаңыз, оның да есімін көрсетіңіз.">
+      Просим подтвердить ваше присутствие<br>Если будете с супругом(ой), укажите оба имени.
     </p>
 
     <div id="rsvp-form">
@@ -633,7 +632,7 @@ function setLang(lang) {
     el.textContent = el.getAttribute('data-'+lang) || el.getAttribute('data-ru');
   });
   document.getElementById('guest-name').placeholder = lang==='kz' ? 'Аты-жөніңіз' : 'Ваше имя / Аты-жөніңіз';
-  document.getElementById('guest-msg').placeholder = lang==='kz' ? 'Жеңге мен күйеуге хабарлама (міндетті емес)' : 'Сообщение для жениха и невесты (необязательно)';
+  document.getElementById('guest-msg').placeholder = lang==='kz' ? 'Қалыңдық пен күйеуге хабарлама (міндетті емес)' : 'Сообщение для жениха и невесты (необязательно)';
 }
 </script>
 
