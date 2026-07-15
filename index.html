@@ -6,15 +6,15 @@
 <title>Sultan & Nursaule — 26.09.2026</title>
 
 <!-- Превью при отправке ссылки в WhatsApp/Telegram -->
-<meta property="og:title" content="Султан & Нұрсәуле — 26.09.2026">
+<meta property="og:title" content="Sultan & Nursaule — 26.09.2026">
 <meta property="og:description" content="Приглашаем Вас на свадьбу! 26 сентября 2026, 17:00. Банкетный зал Улытау, Астана">
-<meta property="og:image" content="https://16072000n.github.io/wedding-sn/photo1a.png">
+<meta property="og:image" content="https://16072000n.github.io/wedding-sn/photo1a.jpg">
 <meta property="og:image:width" content="921">
 <meta property="og:image:height" content="1152">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://16072000n.github.io/wedding-sn/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://16072000n.github.io/wedding-sn/photo1a.png">
+<meta name="twitter:image" content="https://16072000n.github.io/wedding-sn/photo1a.jpg">
 
 <!-- Google Fonts с поддержкой кириллицы -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -258,8 +258,6 @@ footer {
   font-family: 'Montserrat', sans-serif;
   padding: 8px 4px; font-size: 13px; color: var(--text-dark);
 }
-
-  
 .cal-day.highlight {
   position: relative;
   width: 44px; height: 44px;
@@ -273,14 +271,12 @@ footer {
   position: absolute;
   font-size: 44px;
   line-height: 1;
-  color: #e8756a;
+  color: var(--brown-btn);
   z-index: -1;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
 }
 
-
-  
 /* MAP */
 .map-wrap { width: 100%; height: 280px; border-radius: 16px; overflow: hidden; margin-top: 24px; background: var(--mint); }
 .map-wrap iframe { width: 100%; height: 100%; border: none; }
@@ -374,12 +370,18 @@ footer .footer-names {
 <!-- HERO -->
 <section id="hero">
   <p class="hero-eyebrow" data-ru="Приглашаем Вас на свадьбу" data-kz="Сіздерді үйлену тойына шақырамыз">Приглашаем Вас на свадьбу</p>
-  <h1 class="hero-script">Султан &amp; Нұрсәуле</h1>
+  <h1 class="hero-script">
+    Султан<br>
+    <span style="font-size:0.55em; opacity:0.7; display:block; line-height:1">&amp;</span>
+    Нұрсәуле
+  </h1>
   <p class="hero-date" data-ru="26 сентября 2026 года • 17:00" data-kz="2026 жыл 26 қыркүйек • 17:00">26 сентября 2026 года • 17:00</p>
 
   <div class="hero-photo">
-    <img src="photo1a.png" alt="Sultan & Nursaule">
+    <img src="photo1a.jpg" alt="Sultan & Nursaule">
     <div class="photo-placeholder" id="photo-placeholder">
+      <div class="photo-icon">🌸</div>
+      <div>Фото пары</div>
     </div>
   </div>
 
@@ -655,7 +657,7 @@ function setLang(lang) {
     el.textContent = el.getAttribute('data-'+lang) || el.getAttribute('data-ru');
   });
   document.getElementById('guest-name').placeholder = lang==='kz' ? 'Аты-жөніңіз' : 'Ваше имя / Аты-жөніңіз';
-  document.getElementById('guest-msg').placeholder = lang==='kz' ? 'Қалыңдық пен күйеуге хабарлама (міндетті емес)' : 'Сообщение для жениха и невесты (необязательно)';
+  document.getElementById('guest-msg').placeholder = lang==='kz' ? 'Күйеу жігіт пен қалыңдыққа хабарлама (міндетті емес)' : 'Сообщение для жениха и невесты (необязательно)';
 }
 </script>
 
